@@ -20,7 +20,7 @@ css_filter = filter '**/*.css', { restore: true }
 
 src  = 'src'
 dest = 'public'
-name = 'base'
+name = 'supply'
 
 gulp.task 'clean', ->
     clean.sync("#{dest}/*")
