@@ -1,1 +1,48 @@
-<h1>Hello</h1>
+<div layout="column" layout-fill class="relative" layout-fill role="main" ng-controller="homeCtrl">
+    <md-toolbar hide-gt-md class="animate-show" style="background-color:#00bcd4">
+      <div class="md-toolbar-tools">
+        <md-button hide-gt-md class="md-icon-button" aria-label="Settings" ng-click="toggleLeft()">
+          <md-icon  md-svg-icon="img/icons/menu.svg"></md-icon>
+        </md-button>
+        <!-- <span flex></span>
+        <md-button class="md-icon-button" aria-label="Settings" ng-click="logOut()">
+          <md-icon md-svg-icon="img/icons/logout.svg"></md-icon>
+        </md-button> -->
+      </div>
+    </md-toolbar>
+
+    <md-sidenav md-is-locked-open="$mdMedia('gt-md')" class="md-sidenav-left md-whiteframe-z3" md-component-id="left" style="position:fixed">
+    <md-toolbar class=""  style="background-color:#00bcd4; padding-bottom: 30px;">
+        <div>
+            <img id="imgSidenav" src="https://remixcv-cache.s3-eu-west-1.amazonaws.com/user_thumbnail/1443187502-61c43c1d43b0cf3a881a79dc903475be.jpeg"/>
+        </div>
+        <span flex></span>
+        <div padding="" style="text-align:center">
+            <div class="md-title">Mahefa Andrianifahanana</div>
+            <div class="md-body-1">Administrateur</div>
+        </div>
+    </md-toolbar>
+    <!-- menu liste -->
+    <md-list>
+      <md-content flex="" =layout-padding="">
+          <md-list-item class="md-1-line" role="link" md-ink-ripple ng-repeat="data in fakeData">
+            <md-icon md-svg-icon="img/icons/{{data.svg}}" aria-label="{{data.onglet}}"></md-icon>
+            <div class="md-list-item-text" ng-click="logout()">
+              <span style="color:#757575" class="md-subhead">{{data.onglet}}</span>
+            </div>
+            <span flex></span>
+            <!-- <md-icon ng-hide="role" md-svg-icon="img/icons/delete.svg" ng-click="ngDelete(user.firstname, user.id, user.clientCode)"aria-label="delete" md-ink-ripple></md-icon> -->
+          </md-list-item>
+          <!-- <md-card flex="">
+            <input flex="" style="min-height:50px" placeholder="Rechercher un client..." ng-model="keySearch"></input>
+          </md-card> -->
+          <!-- <br/> -->
+      </md-content>
+<!--
+      <ng-view>
+      </ng-view> -->
+<!--
+    <md-divider></md-divider> -->
+  </md-list>
+</md-sidenav>
+</div>
