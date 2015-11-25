@@ -20,10 +20,12 @@ supply
         #     templateUrl: 'templates/login.html',
         #     controller:  'loginCtrl',
         # }
-        .when '/home', {
+        .when '/home',
             templateUrl: 'templates/home.html',
             controller:  'homeCtrl'
-        }
+        .when '/stock',
+            templateUrl: 'templates/stock.html',
+            controller:  'stockCtrl'
         .otherwise { redirectTo: '/home' }
 # .run ($rootScope, AuthentificationService, $location, $cookies) ->
 #     if AuthentificationService.checkCookies()
