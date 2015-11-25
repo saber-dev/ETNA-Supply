@@ -3,19 +3,40 @@ supply
     $scope.hello = "hello"
 
     $scope.fakeData = [{
-      name: "Mahefa"
+      title: "j'ai pris un cable Ethernet"
+      description: "Cable ethernet de couleur blanche"
+      start: "24/10/2015"
+      end:   "24/11/2015"
     }, {
-      name: "Saber"
+      title: "j'ai pris un cable Ethernet"
+      description: "Cable ethernet de couleur noir"
+      start: "24/10/2015"
+      end:   "24/11/2015"
     }, {
-      name: "Sofiane"
+      title: "j'ai pris un cable thunderbolt"
+      description: "Thunderbold de couleur blanche"
+      start: "24/10/2015"
+      end:   "24/11/2015"
     }, {
-      name: "Sam"
+      title: "j'ai pris une clé usb"
+      description: "Clé usb a rayure bleu/noir"
+      start: "24/10/2015"
+      end:   "24/11/2015"
     }, {
-      name: "tes1"
+      title: "j'ai pris des écouteurs"
+      description: "écouteurs de couleur blanches"
+      start: "24/10/2015"
+      end:   "24/11/2015"
     }, {
-      name: "test2"
+      title: "j'ai pris un tournevis"
+      description: "tournevis étoile de couleur noir"
+      start: "24/10/2015"
+      end:   "24/11/2015"
     }, {
-      name: "test3"
+      title: "j'ai pris un cable USB"
+      description: "cable usb de couleur Noire/bleue"
+      start: "24/10/2015"
+      end:   "24/11/2015"
     }]
 
     $scope.test = () ->
