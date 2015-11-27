@@ -12,7 +12,7 @@ supply = angular.module 'supply', [
 
 options = {}
 options.api = {}
-options.api.base_url = 'null'
+options.api.base_url = 'http://localhost:3000/api'
 
 supply
 .config ($routeProvider, $httpProvider, $locationProvider, $cookiesProvider) ->

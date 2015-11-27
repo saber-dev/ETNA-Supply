@@ -1,43 +1,26 @@
 supply
-.controller "homeCtrl", ($scope) ->
-    $scope.hello = "hello"
+.controller "homeCtrl", ($scope, $mdDialog, $http) ->
+    $scope.hello              = "hello"
+    $scope.globalNumberClient = null
+    $scope.informatonData     = null
+    $scope.fakeData           = null
 
-    $scope.fakeData = [{
-      title: "cable Ethernet"
-      description: "Cable ethernet de couleur blanche"
-      start: "24/10/2015"
-      end:   "24/11/2015"
-    }, {
-      title: "cable Ethernet"
-      description: "Cable ethernet de couleur noir"
-      start: "24/10/2015"
-      end:   "24/11/2015"
-    }, {
-      title: "cable thunderbolt"
-      description: "Thunderbold de couleur blanche"
-      start: "24/10/2015"
-      end:   "24/11/2015"
-    }, {
-      title: " clé usb"
-      description: "Clé usb a rayure bleu/noir"
-      start: "24/10/2015"
-      end:   "24/11/2015"
-    }, {
-      title: " écouteurs"
-      description: "écouteurs de couleur blanches"
-      start: "24/10/2015"
-      end:   "24/11/2015"
-    }, {
-      title: "tournevis"
-      description: "tournevis étoile de couleur noir"
-      start: "24/10/2015"
-      end:   "24/11/2015"
-    }, {
-      title: "cable USB"
-      description: "cable usb de couleur Noire/bleue"
-      start: "24/10/2015"
-      end:   "24/11/2015"
-    }]
+    $http
+      type: "GET"
+      url: options.api.base_url + '/userLists'
+    .success (data) ->
+      $scope.fakeData = data
+    .error (err) ->
+      console.log err
 
-    $scope.test = () ->
-        console.log "hey !"
+    $scope.getInfo = ($event, data) ->
+        # $scope.globalNumberClient = data.id
+        $scope.informationData = data
+        console.log data
+        parent = angular.element document.body
+        $mdDialog.show
+            parent: parent
+            targetEvent: $event
+            templateUrl: 'modal/infoModal.html'
+            scope:       $scope
+            preserveScope: true

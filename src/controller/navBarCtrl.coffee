@@ -1,9 +1,56 @@
 supply
 .controller 'navBarCtrl', ($scope, $http, $mdDialog, $mdSidenav, $timeout, SweetAlert, $location) ->
-    # $scope.name = $cookies.get md5.createHash('user')
-    # $scope.role = checkRole.findRole $cookies.get md5.createHash('role')
-    $scope.test = () ->
-        console.log "toto"
+    # getListUSerMaterial = () ->
+    #   $http
+    #     method: "GET"
+    #     url: options.api.base_url + '/materials'
+    #   .success (data) ->
+    #     console.log data
+    #   .error (err) ->
+    #     console.log err
+
+    addListMaterial = (date, data) ->
+      data.status = "En Attente"
+      data.idUser = "123"
+      data.idMaterial = "123"
+      data.isAccepted = false
+      data.isWaiting  = true
+      if not data.isOneDay
+        data.isOneDay = false
+      if not data.isOneWeek
+        data.isOneWeek = false
+      if not data.isOther
+        data.isOther = false
+      todayDate = new Date()
+      $http
+        method: "POST"
+        url:  options.api.base_url + '/userLists'
+        data:
+          itemName:   data.stock
+          idUser:     data.idUser
+          idMaterial: data.idMaterial
+          dateStart:  todayDate
+          dateEnd:    "toto"
+          status:     data.status
+          isAccepted: data.isAccepted
+          isWaiting:  data.isWaiting
+          isOneDay:   data.isOneDay
+          isOneWeek:  data.isOneWeek
+          isOther:    data.isOther
+      .success (data) ->
+          # getListUSerMaterial()
+          $mdDialog.hide()
+          SweetAlert.swal
+              title: "Demende d'emprunt enregistré"
+              text:  "Votre demande à bien été pris en compte, vous allez recevoir un mail de confirmation"
+              type:  "success"
+      .error (err) ->
+          SweetAlert.swal
+              title: "Impossible de faire la demande"
+              text:  "impossible de faire la demande pour le moment"
+              type:  "error"
+
+    # getListUSerMaterial()
 
     $scope.checkAction = (name) ->
         if name == "deconnexion"
@@ -13,10 +60,9 @@ supply
         if name == "Stock"
             $scope.checkStock()
         if name == "Les Demandes"
-          $scope.checkDemandes()
+            $scope.checkDemandes()
         if name == "échéances"
             $scope.checkEcheances()
-
 
     $scope.checkStock = () ->
         $location.path "/stock"
@@ -92,3 +138,40 @@ supply
       ), 200)
 
     $scope.toggleLeft = buildDelayedToggler('left')
+
+    $scope.add = ($event) ->
+        console.log "hello"
+        parent = angular.element document.body
+        $mdDialog.show
+            parent:        parent
+            targetEvent:   $event
+            templateUrl:   'modal/addModal.html'
+            scope:         $scope
+            preserveScope: true
+
+    $scope.commit = (data) ->
+      console.log data
+      # Fake data
+      date = new Date()
+      numberToAdd = null
+      if data.isOneDay
+        numberToAdd = 1
+      if data.isOneWeek
+        numberToAdd = 7
+      date.setDate(date.getDate() + numberToAdd)
+      dd = date.getDate()
+      mm = date.getMonth()
+      y  = date.getFullYear()
+      formattedDate = dd + '/' + mm + '/' + y
+      addListMaterial(date, data)
+
+
+    $scope.getStock = [{
+        name: "tournevis"
+    }, {
+        name: "thunderbold"
+    }, {
+        name: "ethernet"
+    }, {
+        name: "rasbery pi"
+    }]

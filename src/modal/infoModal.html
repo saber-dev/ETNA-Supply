@@ -1,0 +1,22 @@
+<form name="addForm" flex="" style="min-width:800px">
+    <md-content flex="" layout-padding="">
+      <h1 class="md-headline">Emprunt : {{informationData.id}}</h1>
+      <md-input-container flex="">
+        <label>Objet</label>
+        <input ng-disabled="role" ng-model="informationData.itemName" ng-required="true">
+      </md-input-container>
+      <md-input-container flex="">
+          <label>Quantité</label>
+          <input ng-disabled="role" ng-model="informationData.quantity" ng-required="true">
+      </md-input-container>
+      <md-input-container flex="">
+          <label>Début de l'emprunt</label>
+          <input ng-disabled="role" ng-model="informationData.dateStart" ng-required="true">
+      </md-input-container>
+      <md-input-container flex="">
+          <label>Fin de l'emprunt</label>
+          <input ng-disabled="role" ng-model="informationData.dateEnd" ng-required="true">
+      </md-input-container>
+      <md-button ng-disabled="addForm.$invalid" ng-click="commitAddedFacture(addData)" class="md-primary">Ajouter</md-button>
+    </md-content>
+</form>

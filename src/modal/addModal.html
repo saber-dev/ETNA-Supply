@@ -1,0 +1,27 @@
+<form name="addForm" flex="" style="min-width:800px">
+    <md-content flex="" layout-padding="">
+      <h1 class="md-headline">Demander du materiel</h1>
+      <md-input-container flex="">
+        <label>Objet</label>
+        <md-select ng-model="informationData.stock">
+          <md-option ng-repeat="stock in getStock" value="{{stock.name}}">{{stock.name}}</md-option>
+        </md-select>
+      </md-input-container>
+      <md-input-container flex="">
+          <md-checkbox ng-model="informationData.isOneDay" ng-disabled="informationData.isOneWeek || informationData.isOther" aria-label="checkBoxOneDay">
+          1 jour
+          </md-checkbox>
+          <md-checkbox ng-model="informationData.isOneWeek" ng-disabled="informationData.isOther || informationData.isOneDay" aria-label="checkBoxOneWeek">
+          1 semaine
+          </md-checkbox>
+          <md-checkbox ng-model="informationData.isOther" ng-disabled="informationData.isOneDay || informationData.isOneWeek" aria-label="checkBoxOther">
+          Autre
+          </md-checkbox>
+          <!-- <input ng-show="informationData.isOther" ng-model="informationData.customDate"> -->
+      </md-input-container>
+          <div class="datepickerdemoBasicUsage" ng-show="informationData.isOther">
+            <md-datepicker ng-model="informationData.customDAte" md-placeholder="Enter date"></md-datepicker>
+          </div>
+      <md-button ng-disabled="!informationData.isOneDay && !informationData.isOneWeek && !informationData.isOther" ng-click="commit(informationData)" class="md-primary">Ajouter</md-button>
+    </md-content>
+</form>
