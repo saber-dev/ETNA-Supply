@@ -12,14 +12,20 @@ supply
             $scope.lend()
         if name == "Stock"
             $scope.checkStock()
+        if name == "Les Demandes"
+          $scope.checkDemandes()
         if name == "échéances"
             $scope.checkEcheances()
+
 
     $scope.checkStock = () ->
         $location.path "/stock"
         $mdSidenav('left').close();
     $scope.lend = () ->
         $location.path "/home"
+        $mdSidenav('left').close();
+    $scope.checkDemandes = () ->
+        $location.path "/Demandes"
         $mdSidenav('left').close();
 
     $scope.fakeData = [{
@@ -42,7 +48,12 @@ supply
         svg:    'logout.svg'
         function: '$scope.logout()'
         id: 4
-      }]
+      }, {
+        onglet: 'Les Demandes'
+#        svg:    'logout.svg'
+        function: '$scope.checkDemandes()'
+        id: 5
+    }]
 
     $scope.logout = () ->
         SweetAlert.swal {

@@ -7,6 +7,7 @@ supply = angular.module 'supply', [
   'oitozero.ngSweetAlert'
   'ngAria'
   'ngSanitize'
+  'md.data.table'
 ]
 
 options = {}
@@ -26,6 +27,9 @@ supply
         .when '/stock',
             templateUrl: 'templates/stock.html',
             controller:  'stockCtrl'
+        .when '/Demandes',
+            templateUrl: 'templates/checkDemandes.html',
+            controller:  'allDmsCtrl'
         .otherwise { redirectTo: '/home' }
 # .run ($rootScope, AuthentificationService, $location, $cookies) ->
 #     if AuthentificationService.checkCookies()

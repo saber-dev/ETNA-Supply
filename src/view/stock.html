@@ -1,1 +1,26 @@
-<h1>Hello stock !</h1>
+<div style="text-align: left" class="md-whiteframe-3dp" id="material_list" ng-controller="stockCtrl">
+
+    <md-data-table-toolbar>
+        <h2 class="md-title">Matériel</h2>
+    </md-data-table-toolbar>
+    <md-data-table-container>
+        <table md-data-table>
+            <thead  md-order="query.order" md-trigger="onOrderChange">
+            <tr>
+                <th name="Name" order-by="name"></th>
+                <th numeric name="Quantite" order-by="qnt.value"></th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr md-auto-select ng-repeat="data in datas_material" ng-click="getThisMaterial($event, data)" >
+                    <th>
+                        {{data.name}}
+                    </th>
+                    <th ng-style="{color: data.quantite <= 0 ? '#f44336' : '#424242'}" ng-style>
+                        {{ data.quantite <= 0 ? 'Plus disponnible' : data.quantite }}
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+    </md-data-table-container>
+</div>
