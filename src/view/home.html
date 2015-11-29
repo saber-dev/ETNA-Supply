@@ -11,11 +11,16 @@
     <md-card style="width: 280px;" ng-repeat="data in fakeData | filter:keySearch" ng-style="{ 'background-color': data.isAccepted ? '#E8F5E9' : data.isWaiting ? '#FFE0B2' : '#FFEBEE' }">
       <md-card-content>
         <span class="md-subhead">{{data.itemName}}</span>
+        <span flex></span>
       </md-card-content>
       <div class="md-actions" layout="row" layout-align="end center">
         <md-button ng-class="data.isAccepted ? 'md-primary' : data.isWaiting ? '' : 'md-warn'">{{data.status}}</md-button>
         <span flex></span>
-        <md-button class="md-primary" ng-click="getInfo($event, data)">Info</md-button>
+        <md-button ng-show="data.isWaiting" class="md-primary" ng-click="getInfo($event, data)">Info</md-button>
+        <md-icon ng-click="deleteOneList(data._id)" md-svg-src="img/icons/delete.svg"></md-icon>
       </div>
     </md-card>
 </div>
+<md-button class="md-fab md-fab-bottom-right" style="position:fixed; background-color:#1E88E5" aria-label="Add" ng-click="add($event)">
+    <md-icon md-svg-icon="img/icons/add.svg" aria-label="Plus"></md-icon>
+</md-button>

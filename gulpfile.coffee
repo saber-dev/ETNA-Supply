@@ -100,8 +100,8 @@ gulp.task 'copy', ['components'], ->
     .pipe gulp.dest "#{dest}/js"
 
 gulp.task 'copy_json', ->
-  gulp.src "Json/*"
-    .pipe gulp.dest "#{dest}/Json"
+  gulp.src "#{src}/controller/json/*"
+    .pipe gulp.dest "#{dest}/json"
 
 gulp.task 'img_copy', ->
   gulp.src "#{src}/img/**/*"

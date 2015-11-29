@@ -1,26 +1,25 @@
-<div style="text-align: left" class="md-whiteframe-3dp" id="material_list" ng-controller="stockCtrl">
-
-    <md-data-table-toolbar>
-        <h2 class="md-title">Matériel</h2>
-    </md-data-table-toolbar>
-    <md-data-table-container>
-        <table md-data-table>
-            <thead  md-order="query.order" md-trigger="onOrderChange">
-            <tr>
-                <th name="Name" order-by="name"></th>
-                <th numeric name="Quantite" order-by="qnt.value"></th>
+<h1 class="md-display-2" style="color:#757575; text-align:center" >Stock</h1>
+<md-data-table-container flex="" layout-padding="" class="md-whiteframe-3dp">
+    <table md-data-table>
+        <thead  md-order="query.order" md-trigger="onOrderChange">
+        <tr>
+            <th name="Name" style="tex-align:center" order-by="name"></th>
+            <th numeric name="Quantite" order-by="qnt.value"></th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr md-auto-select ng-repeat="data in datas_material" ng-click="getThisMaterial($event, data)" >
+                <th>
+                    {{data.name}}
+                </th>
+                <th ng-style="{color: data.quantity <= 0 ? '#f44336' : '#424242'}">
+                    {{ data.quantity <= 0 ? 'Plus disponnible' : data.quantity }}
+                </th>
             </tr>
-            </thead>
-            <tbody>
-                <tr md-auto-select ng-repeat="data in datas_material" ng-click="getThisMaterial($event, data)" >
-                    <th>
-                        {{data.name}}
-                    </th>
-                    <th ng-style="{color: data.quantite <= 0 ? '#f44336' : '#424242'}" ng-style>
-                        {{ data.quantite <= 0 ? 'Plus disponnible' : data.quantite }}
-                    </th>
-                </tr>
-            </tbody>
-        </table>
-    </md-data-table-container>
-</div>
+        </tbody>
+    </table>
+</md-data-table-container>
+
+<md-button class="md-fab md-fab-bottom-right" style="position:fixed; background-color:#1E88E5" aria-label="AddMaterialStock" ng-click="addMaterialStock($event)">
+    <md-icon md-svg-icon="img/icons/add.svg" aria-label="Plus"></md-icon>
+</md-button>

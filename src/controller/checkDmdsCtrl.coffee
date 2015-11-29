@@ -1,10 +1,9 @@
 supply
-.controller "allDmdsCtrl",($scope, $http) ->
+.controller "allDmsCtrl",($scope, $http) ->
   $scope.datas = null
 
   $http
     type: "GET"
-    url: "../src/controller/json/fakeData.json"
+    url: "../json/fakeData.json"
   .success (data) ->
     $scope.datas = data
-

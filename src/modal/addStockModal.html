@@ -1,0 +1,14 @@
+<form name="addForm" flex="" style="min-width:800px">
+    <md-content flex="" layout-padding="">
+      <h1 class="md-headline">Ajouter du materiel</h1>
+      <md-input-container flex="">
+          <label>Nom de l'objet</label>
+          <input ng-model="stock.name">
+      </md-input-container>
+      <md-input-container flex="">
+          <label>Quantité</label>
+          <input ng-model="stock.quantity">
+      </md-input-container>
+      <md-button ng-click="commit(stock)" class="md-primary">Ajouter</md-button>
+    </md-content>
+</form>
