@@ -1,1 +1,19 @@
-<h1>Hello les demandes</h1>
+<!--Ici je dois reprendre toute les demandes-->
+ <!--{{datas}}-->
+<!--FAKE DATA-->
+    <h1 class="md-display-2" style="color:#757575 ; text-align:center" >Les Demandes</h1>
+<md-content>
+    <md-list>
+        <md-list-item class="md-3-line" ng-repeat="data in datas">
+            <img class="md-avatar" ng-src="http://lorempixel.com/70/70" clas="face" >
+            <div class="md-list-item-text">
+                <h4>{{data.materiel}}</h4>
+                <h3>{{data.firstName}} {{data.lastName}} <br> {{data.login}}</h3>
+                <!--ce qu'il veut-->
+                <p>{{data.raison}}</p>
+            </div>
+        <md-button md-no-ink class="md-primary">Accepter</md-button>
+        <md-button md-no-ink class="md-warn">Refuser</md-button>
+        </md-list-item>
+    </md-list>
+</md-content>

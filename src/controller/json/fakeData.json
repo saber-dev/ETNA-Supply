@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "firstName": "User",
+    "lastName": "One",
+    "login": "one_u",
+    "materiel": "usb",
+    "raison": "pour ma guelle tu connais"
+  },
+  {
+    "id": 2,
+    "firstName": "User",
+    "lastName": "Two",
+    "login": "two_u",
+    "materiel": "ethernet",
+    "raison": "les vrais le savent"
+  }
+]

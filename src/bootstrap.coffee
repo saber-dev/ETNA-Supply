@@ -29,7 +29,7 @@ supply
             controller:  'stockCtrl'
         .when '/Demandes',
             templateUrl: 'templates/checkDemandes.html',
-            controller:  'allDmsCtrl'
+            controller:  'allDmdsCtrl'
         .otherwise { redirectTo: '/home' }
 # .run ($rootScope, AuthentificationService, $location, $cookies) ->
 #     if AuthentificationService.checkCookies()
