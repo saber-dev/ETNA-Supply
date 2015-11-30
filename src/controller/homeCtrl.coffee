@@ -22,6 +22,7 @@ supply
       data.idMaterial = "123"
       data.isAccepted = false
       data.isWaiting  = true
+      data.login      = "andria_m"
       if not data.isOneDay
         data.isOneDay = false
       if not data.isOneWeek
@@ -33,6 +34,7 @@ supply
         method: "POST"
         url:  options.api.base_url + '/userLists'
         data:
+          login:      data.login
           itemName:   data.stock
           idUser:     data.idUser
           idMaterial: data.idMaterial
@@ -62,6 +64,15 @@ supply
           methode: "GET"
           url:     options.api.base_url + "/materials"
       .success (data) ->
+          for name in data
+            $http
+                method: "GET"
+                url:    options.api.base_url + '/countList/' + name.name
+            .success (data) ->
+                name.quantity = (parseInt(name.quantity) - parseInt(data))
+                console.log name.quantity
+            .error (err) ->
+                console.log "unable to fetch data"
           $scope.getStock = data
       .error (err) ->
           console.log err

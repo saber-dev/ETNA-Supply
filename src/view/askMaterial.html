@@ -1,0 +1,24 @@
+<h1 class="md-display-2" style="color:#757575 ; text-align:center" >Les demandes</h1>
+<div class="" layout-padding="" flex="">
+  <md-card flex="" layout-padding>
+    <md-input-container md-no-float="" class="md-block">
+      <md-icon md-svg-src="img/icons/search.svg"></md-icon>
+      <input ng-model="keySearch" type="text" placeholder="Rechercher">
+    </md-input-container>
+  </md-card>
+</div>
+<md-content layout-padding="" class="md-whiteframe-z1">
+    <h1 style="text-align:center; color:#757575" ng-show="list.length <= 0">Aucune demande pour le moment</h1>
+    <md-list>
+        <md-list-item class="md-3-line" ng-repeat="data in list | filter:keySearch">
+            <img class="md-avatar" ng-src="http://lorempixel.com/70/70" clas="face" >
+            <div class="md-list-item-text">
+                <h4>{{data.itemName}}</h4>
+                <h3>{{data.login}}</h3>
+                <p>Début : {{data.dateStart}} - Fin: {{data.dateEnd}}</p>
+            </div>
+        <md-button class="md-primary" ng-click="accept(data._id)">Accepter</md-button>
+        <md-button class="md-warn" ng-click="refuse(data._id)">Refuser</md-button>
+        </md-list-item>
+    </md-list>
+</md-content>

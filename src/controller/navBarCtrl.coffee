@@ -12,6 +12,8 @@ supply
             $scope.checkDemandes()
         if name == "échéances"
             $scope.checkEcheances()
+        if name == "Historique"
+            $scope.checkHistory()
 
     $scope.checkStock = () ->
         $location.path "/stock"
@@ -20,13 +22,15 @@ supply
         $location.path "/home"
         $mdSidenav('left').close();
     $scope.checkDemandes = () ->
-        $location.path "/Demandes"
+        $location.path "/demande"
         $mdSidenav('left').close();
+    $scope.checkHistory = () ->
+        $location.path "/historique"
+        $mdSidenav('left').close()
 
     $scope.fakeData = [{
         onglet:   'Mes emprunts'
         svg:      'lend.svg'
-        function: 'lend'
         id: 1
       }, {
         onglet: 'Stock'
@@ -36,13 +40,15 @@ supply
       }, {
         onglet:   'Les Demandes'
         svg:      'echeances.svg'
-        function: '$scope.checkDemandes()'
         id: 3
+      }, {
+        onglet: 'Historique'
+        svg:    'history.svg'
+        id: 4
       }, {
         onglet: 'deconnexion'
         svg:    'logout.svg'
-        function: '$scope.logout()'
-        id: 4
+        id: 5
       }]
 
     $scope.logout = () ->

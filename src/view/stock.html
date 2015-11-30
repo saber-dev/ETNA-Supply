@@ -13,7 +13,9 @@
                     {{data.name}}
                 </th>
                 <th ng-style="{color: data.quantity <= 0 ? '#f44336' : '#424242'}">
-                    {{ data.quantity <= 0 ? 'Plus disponnible' : data.quantity }}
+                    <!-- {{message(data.name)}} -->
+                    <!-- countAvailableItem(data.itemName) -->
+                     {{ data.quantity <= 0 ? 'Plus disponnible' : data.quantity }}
                 </th>
             </tr>
         </tbody>

@@ -5,6 +5,7 @@ module.exports = function(router, app) {
     router.route('/userLists')
         .post(function(req, res) {
             var userList        = new UserList();
+            userList.login      = req.body.login;
             userList.itemName   = req.body.itemName;
             userList.idUser     = req.body.idUser;
             userList.idMaterial = req.body.idMaterial;
@@ -58,6 +59,7 @@ module.exports = function(router, app) {
                 if (err)
                     res.send(err);
 
+                userList.login      = req.body.login;
                 userList.itemName   = req.body.itemName;
                 userList.idUser     = req.body.idUser;
                 userList.idMaterial = req.body.idMaterial;
@@ -86,5 +88,48 @@ module.exports = function(router, app) {
                   res.send(err);
               res.json({ message: "list successfully deleted "});
           });
+        });
+
+    router.route('/userListAsk')
+        .get(function(req, res) {
+            UserList.find({ status: "En Attente" }, function(err, userListAsk){
+                if (err)
+                    res.send(err);
+                res.json(userListAsk);
+            });
+        });
+
+    router.route('/userListAsk/:id_userList')
+        .put(function(req, res){
+            UserList.findById(req.params.id_userList, function(err, userList){
+                if (err)
+                    res.send(err);
+
+                userList.status     = req.body.status;
+                userList.isAccepted = req.body.isAccepted;
+                userList.isWaiting  = req.body.isWaiting;
+
+                userList.save(function(err) {
+                  if (err)
+                      res.send(err);
+                  res.json({ message: 'User list Updated'});
+                });
+            });
+        });
+    router.route('/historyList')
+        .get(function(req, res){
+            UserList.find({$or : [{ status: "Accepté"}, {status: "Refusé"}]}, function(err, userListHistory){
+                if (err)
+                    res.send(err);
+                res.json(userListHistory);
+            });
+        });
+    router.route('/countList/:nameItem')
+        .get(function(req, res) {
+            UserList.count({$and : [{ itemName:req.params.nameItem }, {status: "Accepté"}]}, function(err, countList){
+                if (err)
+                    res.send(err);
+                res.json({ name: req.params.nameItem, count:countList });
+            });
         });
 }

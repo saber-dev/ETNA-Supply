@@ -1,0 +1,41 @@
+<h1 class="md-display-2" style="color:#757575; text-align:center" >Historique de demande</h1>
+<div class="" layout-padding="" flex="">
+  <md-card flex="" layout-padding>
+    <md-input-container md-no-float="" class="md-block">
+      <md-icon md-svg-src="img/icons/search.svg"></md-icon>
+      <input ng-model="keySearch" type="text" placeholder="Rechercher dans l'historique">
+    </md-input-container>
+  </md-card>
+</div>
+
+<h2 layout-padding="" class="md-headline" style="color:#757575;">Demandes acceptés :</h1>
+<div class='md-padding' layout="row" layout-wrap>
+    <md-card style="width: 280px;" ng-repeat="data in history | filter:data.status='Accepté' | filter:keySearch" ng-style="{ 'background-color': data.isAccepted ? '#E8F5E9' : data.isWaiting ? '#FFE0B2' : '#FFEBEE' }">
+      <md-card-content>
+        <span class="md-subhead">{{data.itemName}}</span>
+        <span flex></span>
+      </md-card-content>
+      <div class="md-actions" layout="row" layout-align="end center">
+        <md-button ng-class="data.isAccepted ? 'md-primary' : data.isWaiting ? '' : 'md-warn'">{{data.login}}</md-button>
+        <span flex></span>
+        <md-button class="md-primary" ng-click="getInfo($event, data)">Info</md-button>
+        <md-icon ng-show="data.isWaiting" ng-click="deleteOneList(data._id)" md-svg-src="img/icons/delete.svg"></md-icon>
+      </div>
+    </md-card>
+</div>
+
+<h2 layout-padding="" class="md-headline" style="color:#757575;">Demandes Refusés :</h1>
+<div class='md-padding' layout="row" layout-wrap>
+    <md-card style="width: 280px;" ng-repeat="data in history | filter:data.status='Refusé' | filter:keySearch" ng-style="{ 'background-color': data.isAccepted ? '#E8F5E9' : data.isWaiting ? '#FFE0B2' : '#FFEBEE' }">
+      <md-card-content>
+        <span class="md-subhead">{{data.itemName}}</span>
+        <span flex></span>
+      </md-card-content>
+      <div class="md-actions" layout="row" layout-align="end center">
+        <md-button ng-class="data.isAccepted ? 'md-primary' : data.isWaiting ? '' : 'md-warn'">{{data.login}}</md-button>
+        <span flex></span>
+        <md-button class="md-primary" ng-click="getInfo($event, data)">Info</md-button>
+        <md-icon ng-show="data.isWaiting" ng-click="deleteOneList(data._id)" md-svg-src="img/icons/delete.svg"></md-icon>
+      </div>
+    </md-card>
+</div>

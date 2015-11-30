@@ -16,7 +16,7 @@
       <div class="md-actions" layout="row" layout-align="end center">
         <md-button ng-class="data.isAccepted ? 'md-primary' : data.isWaiting ? '' : 'md-warn'">{{data.status}}</md-button>
         <span flex></span>
-        <md-button ng-show="data.isWaiting" class="md-primary" ng-click="getInfo($event, data)">Info</md-button>
+        <md-button class="md-primary" ng-click="getInfo($event, data)">Info</md-button>
         <md-icon ng-click="deleteOneList(data._id)" md-svg-src="img/icons/delete.svg"></md-icon>
       </div>
     </md-card>

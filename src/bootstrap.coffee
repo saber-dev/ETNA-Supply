@@ -23,7 +23,10 @@ supply
         .when '/stock',
             templateUrl: 'templates/stock.html',
             controller:  'stockCtrl'
-        .when '/Demandes',
-            templateUrl: 'templates/checkDemandes.html',
-            controller:  'allDmsCtrl'
+        .when '/demande',
+            templateUrl: 'templates/askMaterial.html',
+            controller:  'askMaterialCtrl'
+        .when '/historique',
+            templateUrl: 'templates/history.html',
+            controller:  'historyCtrl'
         .otherwise { redirectTo: '/home' }

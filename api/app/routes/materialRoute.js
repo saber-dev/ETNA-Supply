@@ -1,14 +1,15 @@
 var Material = require('../models/material');
+var UserList = require('../models/userList');
 
 module.exports = function(router) {
 
     router.route('/materials')
         .post(function(req, res) {
-            var material      = new Material();
-            material.name     = req.body.name;
-            material.quantity = req.body.quantity;
+            var material       = new Material();
+            material.name      = req.body.name;
+            material.quantity  = req.body.quantity;
             material.dateStart = "nope";
-            material.dateEnd = "nope";
+            material.dateEnd   = "nope";
 
             material.save(function(err) {
                 if (err)

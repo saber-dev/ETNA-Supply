@@ -4,7 +4,7 @@
       <md-input-container flex="">
         <label>Objet</label>
         <md-select ng-model="informationData.stock">
-          <md-option ng-repeat="stock in getStock" value="{{stock.name}}">{{stock.name}}</md-option>
+          <md-option ng-repeat="stock in getStock" ng-if="stock.quantity > 0" value="{{stock.name}}">{{stock.name}}</md-option>
         </md-select>
       </md-input-container>
       <md-input-container flex="">
