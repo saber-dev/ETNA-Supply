@@ -8,6 +8,7 @@ supply = angular.module 'supply', [
   'ngAria'
   'ngSanitize'
   'md.data.table'
+  'angular-md5'
 ]
 
 options = {}
@@ -29,4 +30,12 @@ supply
         .when '/historique',
             templateUrl: 'templates/history.html',
             controller:  'historyCtrl'
-        .otherwise { redirectTo: '/home' }
+        .when '/login',
+            templateUrl: 'templates/foo.html',
+            controller:  'loginCtrl'
+        .otherwise { redirectTo: '/login' }
+.run ($rootScope, AuthentificationService, $location, $cookies) ->
+    if AuthentificationService.checkCookies()
+        $location.path '/home'
+    else
+        $location.path '/login'

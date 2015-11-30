@@ -59,4 +59,13 @@ module.exports = function(router) {
               res.json({ message: "user successfully deleted "});
           });
         });
+
+    router.route('/Users/login')
+        .post(function(req,res){
+              User.find({$and : [{ login:req.body.login }, {password: req.body.password }]}, function(err, loginData){
+                  if (err)
+                      res.send(err);
+                  res.json(loginData);
+              });
+        });
 }

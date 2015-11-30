@@ -1,6 +1,8 @@
 supply
 .controller 'navBarCtrl', ($scope, $http, $mdDialog, $mdSidenav, $timeout, SweetAlert, $location) ->
 
+    $scope.loginPage = $location.path() == '/login'
+
     $scope.checkAction = (name) ->
         if name == "deconnexion"
             $scope.logout()

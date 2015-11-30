@@ -1,5 +1,6 @@
 supply
-.controller "homeCtrl", ($scope, $mdDialog, $http, SweetAlert) ->
+.controller "homeCtrl", ($scope, $mdDialog, $http, SweetAlert, $location) ->
+
     $scope.hello              = "hello"
     $scope.globalNumberClient = null
     $scope.informatonData     = null

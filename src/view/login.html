@@ -1,0 +1,20 @@
+<div flex="" layout="" layout-sm="column" style="min-width: 400px; min-height: 200px">
+  <md-content flex="" class="md-padding md-whiteframe-2dp" style="background-color:#FAFAFA">
+    <div class="ic">
+    <form name="loginForm">
+      <div id = "img"> </div>
+      <h2 class="md-display-1" style="text-align:center; color:#03A9F4">ETNA Supply</h2>
+      <p class="md-subhead" style="text-align:center; color:#757575">Veuillez vous connecter</p>
+      <md-input-container>
+          <label>Utilisateur</label>
+          <input ng-required="true" name="username" ng-model="project.username">
+        </md-input-container>
+        <md-input-container>
+            <label>Mot de passe</label>
+            <input type="password" ng-required="true" name="password" ng-model="project.password">
+          </md-input-container>
+      <md-button ng-disabled="loginForm.$invalid" ng-click="signIn(project)" style="background-color:#03A9F4 !important" class="md-raised button md-primary">Connexion</md-button>
+    </form>
+  </div>
+  </md-content>
+</div>

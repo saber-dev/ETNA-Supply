@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/nmahefa/Client_base#readme",
   "dependencies": {
+    "angular-md5": "^0.1.10",
     "coffee-script": "^1.10.0",
     "del": "^2.0.2",
     "gulp": "^3.9.0",
